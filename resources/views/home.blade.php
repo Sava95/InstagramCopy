@@ -8,7 +8,11 @@
         </div>
 
         <div class="col-7">
-            <div> <h1> {{ $user -> username }} </h1> </div>
+            <div class='d-flex'>
+                 <h1> {{ $user -> username }} </h1> 
+                 <button class='btn btn-primary ml-3'> New Post </button>
+            </div>
+
 
             <div class='d-flex'> 
                 <div class='pr-4'> <strong> 153 </strong> posts </div>
@@ -16,8 +20,9 @@
                 <div class='pr-4'> <strong> 24 </strong> following </div>
             </div>
 
-            <div style='margin-top:50px'> Sava Nedeljkovic </div>
-            <div> 🌍 Traveler </div>
+            <div style='margin-top:50px'> <strong> {{ $user->profile->title }} </strong> </div>
+            <div> {{ $user->profile->description }} </div>
+            <div> <a href='#'> {{ $user->profile->url}} </a> </div>
             
         </div>
     </div>
