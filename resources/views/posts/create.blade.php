@@ -18,7 +18,7 @@
                 <div class="form-group row">
                     <label for="title" class="col-md-4 col-form-label"> Image Title</label>
 
-                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
+                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" autocomplete="title" autofocus>
 
                     @error('title')
                         <span class="invalid-feedback" role="alert">
@@ -37,12 +37,12 @@
                 <div class="form-group row">
                     <label for="description" class="col-md-4 col-form-label"> Image Descriptions</label>
 
-                    <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus>
+                    <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" autocomplete="description" autofocus>
 
                     @error('description')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
-                        </span>
+                        </span> 
                     @enderror
                 </div>
 
@@ -58,9 +58,7 @@
                     <div> <input id="image" type="file" class="form-control-file" name="image" style="width: 76%"> </div>
 
                     @error('image')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                        <strong>{{ $message }}</strong>
                     @enderror
 
                 </div>
