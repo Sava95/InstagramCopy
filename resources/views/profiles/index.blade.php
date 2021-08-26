@@ -10,12 +10,12 @@
         <div class="col-7">
             <div class='d-flex'>
                  <h1> {{ $user -> username }} </h1> 
-                 <button class='btn btn-primary ml-3'> New Post </button>
+                 <a href='/post/create' class='btn btn-primary ml-3 d-flex' style='align-items: center;'> New Post </a>
             </div>
 
 
             <div class='d-flex'> 
-                <div class='pr-4'> <strong> 153 </strong> posts </div>
+                <div class='pr-4'> <strong> {{ $user->posts->count() }} </strong> posts </div>
                 <div class='pr-4'> <strong> 12 </strong> followers </div>
                 <div class='pr-4'> <strong> 24 </strong> following </div>
             </div>
@@ -28,17 +28,13 @@
     </div>
 
     <div class="row">
-        <div class="col-4">
-            <img src='https://via.placeholder.com/293' width='293'>
-        </div>
-
-        <div class="col-4">
-        <img src='https://via.placeholder.com/293'  width='293'>
-        </div>
-
-        <div class="col-4">
-        <img src='https://via.placeholder.com/293' width='293' >
-        </div>
+        @foreach($user->posts as $post)
+            <div class="col-4 pb-4">
+                <a href="/post/{{ $post->id}}"> 
+                    <img src='/storage/{{ $post->image }}' width='293'>
+                </a>
+            </div>
+        @endforeach
     </div>
 </div>
 
