@@ -10,9 +10,15 @@
         <div class="col-7">
             <div class='d-flex'>
                  <h1> {{ $user -> username }} </h1> 
-                 <a href='/post/create' class='btn btn-primary ml-3 d-flex' style='align-items: center;'> New Post </a>
+                
+                @can('update', $user->profile)
+                    <a href='/post/create' class='btn btn-primary ml-3 d-flex' style='align-items: center;'> New Post </a>
+                @endcan
             </div>
 
+            @can('update', $user->profile)
+                <a href='/profile/{{ $user->id }}/edit'  style='align-items: center;'> Edit Profile</a>
+            @endcan
 
             <div class='d-flex'> 
                 <div class='pr-4'> <strong> {{ $user->posts->count() }} </strong> posts </div>

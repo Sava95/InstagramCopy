@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Model\Post;
+use App\Models\Post;
 use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
@@ -45,6 +45,12 @@ class PostController extends Controller
         // this will bring out an error since we are missing the user_id
 
         return redirect('/profile/' . auth()->user()->id);
+    }
+
+    public function show (Post $post) {
+
+        
+        return view('posts.show', compact('post'));
     }
 }
  
