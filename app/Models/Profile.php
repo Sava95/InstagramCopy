@@ -10,6 +10,12 @@ class Profile extends Model
 {
     protected $guarded = [];
 
+    public function profileImage() { 
+
+        $imagePath = ($this->image) ?  $this->image : 'profile/default_profile_picture.png'; // $this referes to the Profile Model
+        return '/storage/' . $imagePath;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

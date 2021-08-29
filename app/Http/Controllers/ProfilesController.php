@@ -38,19 +38,20 @@ class ProfilesController extends Controller
 
         // $user->profile->update($data);   this way someone can just go into your profile though the URL and change it, not safe
 
-        
         if (request('image')) {
             $imagePath = request('image')->store('profile', 'public'); // stores the file in storage/app/public/profile folder
 
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);   // it doesnt resize it, it fits it to 1200x1200px
             $image->save();
-            
+
+            auth()->user()->profile->update(array_merge($data, ['image' => $imagePath] )); // calls an error if an non auth user tries to edit your profile , array_merge overwrittes the key 'image' 
+
+        } else {
+            auth()->user()->profile->update($data); 
+
         }
-        dd($data);
-
-        auth()->user()->profile->update(array_merge($data, ['image' => $imagePath] )); // calls an error if an non auth user tries to edit your profile , array_merge overwrittes the key 'image' 
-
-
+        
+        
         return redirect("/profile/{$user->id}");
     }
 }

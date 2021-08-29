@@ -39,6 +39,18 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    protected static function boot() {
+
+        parent::boot();
+
+        static::created(function ($user) {
+            $user->profile()->create([
+                'title' => $user->username,
+            ]);
+        });
+    }
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

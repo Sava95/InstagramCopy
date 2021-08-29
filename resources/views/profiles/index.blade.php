@@ -4,13 +4,17 @@
 <div class="container">
     <div class="row">
         <div class="col-3 profile_image">
-            <image src='\images\profile_picture.jpg' height='200' width='200' class='rounded-circle' >
+            <image src='{{$user->profile->profileImage()}}' height='200' width='200' class='rounded-circle' >
         </div>
 
         <div class="col-7">
             <div class='d-flex'>
-                 <h1> {{ $user -> username }} </h1> 
-                
+                <div class='d-flex align-items-center' style='padding-bottom:16px'>
+                    <h1 style='margin:0px'> {{ $user -> username }} </h1> 
+
+                    <button class='btn btn-primary ml-3'> Follow </button>
+                </div>
+
                 @can('update', $user->profile)
                     <a href='/post/create' class='btn btn-primary ml-3 d-flex' style='align-items: center;'> New Post </a>
                 @endcan
