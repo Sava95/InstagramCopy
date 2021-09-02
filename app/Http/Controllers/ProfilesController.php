@@ -10,11 +10,12 @@ class ProfilesController extends Controller
 {
     public function index($user_id)
     {
-
         $user = User::findOrFail($user_id);
-
+        $follows = (auth()->user()) ? auth()->user()->following->contains($user) :false ;
+        
         return view('profiles.index', [
             'user' => $user,
+            'follows' => $follows,
         ]);
     }
 
